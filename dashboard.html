@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head><title>KYC Dashboard</title></head>
+<body>
+<h1>KYC Entity Profiles</h1>
+<table border="1">
+  <tr>
+    <th>#</th><th>Name</th><th>Risk</th><th>PEP</th><th>Actions</th>
+  </tr>
+  {% for e in entities %}
+  <tr>
+    <td>{{ loop.index0 }}</td>
+    <td>{{ e['Full Legal Name'] }}</td>
+    <td>{{ e['Risk Classification'] }}</td>
+    <td>{{ e['PEP Status'] }}</td>
+    <td>
+      <form action="/alert" method="post">
+        <input type="hidden" name="entity_index" value="{{ loop.index0 }}">
+        <button type="submit">Send Alert</button>
+      </form>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+<a href="/download-report">Download Excel Report</a>
+</body>
+</html>
