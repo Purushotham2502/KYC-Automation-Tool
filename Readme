@@ -1,0 +1,39 @@
+Overview:
+An automated system designed to perform KYC compliance screening by integrating multiple watchlist sources and APIs to identify high-risk individuals and entities.
+
+Features:
+- Multi-API integration with Namescan and OpenSanctions
+- Automated PEP, sanctions, and risk screening
+- NLP-based data merging and entity resolution
+- Excel report generation with risk classification visualization
+- Interactive dashboard via Streamlit to review client profiles
+
+kyc-automation/
+├── main.py                          # Main orchestration script
+├── collect_inputs.py                # Excel data reader
+├── scanname.py                      # Namescan API client
+├── opensanctions.py                 # OpenSanctions API client
+├── combiner.py                      # Data merging logic
+├── extract_customer_identity.py     # Identity profiling
+├── kyc_dashboard.py                 # Streamlit dashboard
+├── report.py                        # Excel report generator
+├── nlp_utils.py                     # NLP helper functions
+├── config.py                        # API configuration
+├── Client_Data.xlsx                 # Input template
+└── kyc_summary.xlsx                 # Output report
+
+Installation:
+- Install Python 3.8+ and dependencies:
+  pip install pandas requests spacy streamlit openpyxl xlsxwriter pillow
+- Download spaCy English model:
+  python -m spacy download en_core_web_sm
+
+Usage:
+- Fill client data in 'Client_Data.xlsx'
+- Run 'python main.py' to perform batch screening
+- Run 'streamlit run kyc_dashboard.py' to start the interactive dashboard
+- Review generated reports in 'kyc_summary.xlsx'
+
+Security:
+- Keep 'config.py' with API keys out of public version control
+- Handle personal data responsibly and compliant with applicable laws
